@@ -180,7 +180,7 @@ public class tintucService {
         }
         return null;
     }
-    public static TbTintuc getOnebyid(String id) {
+    public TbTintuc getOnebyid(String id) {
        Session session = NewHibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
@@ -200,5 +200,27 @@ public class tintucService {
             session.close();
         }
         return null;
+    }
+    public TbTintuc GettintucByID(String tinID) {
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            String strQuery = "from TbTintuc where idtintuc=" + tinID;
+            Query query = session.createQuery(strQuery);
+            TbTintuc user = (TbTintuc) query.uniqueResult();
+            tx.commit();
+            return user;
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            System.out.println(e.toString());
+        } finally {
+            session.close();
+        }
+        return null;
+
     }
 }

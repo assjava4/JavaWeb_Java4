@@ -5,14 +5,21 @@
  */
 package controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import model.TbLoaitintuc;
 import model.TbTintuc;
+import service.FileService;
 import service.LoaitinService;
 import service.tintucService;
 
@@ -20,8 +27,13 @@ import service.tintucService;
  *
  * @author DucHuy
  */
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024 * 10,
+        maxFileSize = 1024 * 1024 * 50,
+        maxRequestSize = 1024 * 1024 * 100
+)
 public class editnewsServlet extends HttpServlet {
-
+private static final String UPLOAD_DIR = "images/";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,30 +46,31 @@ public class editnewsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       request.setCharacterEncoding("utf-8");
-        tintucService TTService = new tintucService();
+        request.setCharacterEncoding("utf-8");
+        String tieude, tomtat, noidung, hinh, idtin;
+        tieude = request.getParameter("tieude");
+        tomtat = request.getParameter("tomtat");
+        noidung = request.getParameter("noidung");
+        hinh = uploadFile(request);
+        idtin = request.getParameter("idtin");
+      
 
-        String  idtintuc = request.getParameter("idtintuc");
-        String tieude = request.getParameter("tieude");
-        String noidung = request.getParameter("noidung");
-        String motangan = request.getParameter("tomtat");
-        String hinhanh = request.getParameter("hinh");
-        int loaitin = Integer.parseInt(request.getParameter("loaitin"));
-        
-        
-            TbTintuc tt = new TbTintuc();
-            LoaitinService ltservice = new LoaitinService();
-            TbLoaitintuc ltt = ltservice.getTbLoaiTinById(loaitin);
+        tintucService tt = new tintucService();
 
-            tt.setTentieude(tieude);
-            tt.setTomtatnd(motangan);
-            tt.setNoidung(noidung);
-            tt.setHinhanh(hinhanh);
-            tt.setTbLoaitintuc(ltt);
-            TTService.InsertTinTuc(tt);
-            response.sendRedirect("suaNews.jsp");
-            //response.sendRedirect("./admin/QuanLyTinTuc.jsp");
+        TbTintuc tbtt = tt.getOnebyid(idtin);
+        tbtt.setTentieude(tieude);
+        tbtt.setTomtatnd(tomtat);
+        tbtt.setNoidung(noidung);
+        tbtt.setHinhanh(hinh);
+        boolean rs = tt.InsertTinTuc(tbtt);
+        if (rs) {
+            response.sendRedirect("dstintuc.jsp");
+        }else
+            response.sendRedirect("suaNews.jsp?idtintuc="+idtin);
         
+        
+        //response.sendRedirect("./admin/QuanLyTinTuc.jsp");
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -98,5 +111,46 @@ public class editnewsServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+private String uploadFile(HttpServletRequest request) throws IOException, ServletException {
+        String fileName = "";
+        try {
+            Part filePart = request.getPart("photo");
 
+            //fileName: picture-001.jpg
+            fileName = filePart.getSubmittedFileName();
+            String filename = fileName;
+
+            //applicationPath: C:\Users\Lonely\Documents\NetBeansProjects\Shop_Bonfire\build\web
+            String applicationPath = request.getServletContext().getRealPath("");
+            fileName = FileService.ChangeFileName(fileName);
+            //File.separator: \ 
+            String basePath = applicationPath + File.separator + UPLOAD_DIR + File.separator;
+
+            InputStream inputStream = null;
+            OutputStream outputStream = null;
+            try {
+                File outputFilePath = new File(basePath + fileName);
+                inputStream = filePart.getInputStream();
+                outputStream = new FileOutputStream(outputFilePath);
+                int read = 0;
+                final byte[] bytes = new byte[1024];
+                while ((read = inputStream.read(bytes)) != -1) {
+                    outputStream.write(bytes, 0, read);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                fileName = "";
+            } finally {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+                if (outputStream != null) {
+                    outputStream.close();
+                }
+            }
+        } catch (Exception e) {
+            fileName = "";
+        }
+        return fileName;
+    }
 }
