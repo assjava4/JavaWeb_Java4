@@ -42,8 +42,8 @@ Contributor(s):
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="db_tintuc"/>
   <table-filter match-name="tb_loaitintuc"/>
-  <table-filter match-name="tb_quyen"/>
-  <table-filter match-name="tb_phanhoi"/>
   <table-filter match-name="tb_tintuc"/>
   <table-filter match-name="tb_users"/>
+  <table-filter match-name="tb_quyen"/>
+  <table-filter match-name="tb_phanhoi"/>
 </hibernate-reverse-engineering>

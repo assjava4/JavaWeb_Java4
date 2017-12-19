@@ -45,15 +45,10 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db_tintuc?characterEncording=utf8</property>
     <property name="hibernate.connection.username">root</property>
-<<<<<<< HEAD
-    <property name="hibernate.connection.password">duongnguyen97</property>
-    <mapping resource="model/TbBinhluan.hbm.xml"/>
-=======
     <property name="hibernate.connection.password">123456</property>
-    <mapping resource="model/TbTintuc.hbm.xml"/>
->>>>>>> 7f82e0d8df6f4481f6ff80e8b56dd1dad62e4f40
     <mapping resource="model/TbUsers.hbm.xml"/>
     <mapping resource="model/TbLoaitintuc.hbm.xml"/>
+    <mapping resource="model/TbTintuc.hbm.xml"/>
     <mapping resource="model/TbQuyen.hbm.xml"/>
     <mapping resource="model/TbPhanhoi.hbm.xml"/>
   </session-factory>
