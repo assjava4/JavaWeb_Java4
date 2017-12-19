@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2017 1:46:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TbUsers" table="tb_users" catalog="db_tintuc" optimistic-lock="version">
+        <id name="iduser" type="java.lang.Integer">
+            <column name="iduser" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tbQuyen" class="model.TbQuyen" fetch="select">
+            <column name="idquyen" not-null="true" />
+        </many-to-one>
+        <property name="tenuser" type="string">
+            <column name="tenuser" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="matkhau" type="string">
+            <column name="matkhau" length="30" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" not-null="true" />
+        </property>
+        <property name="hoten" type="string">
+            <column name="hoten" length="45" not-null="true" />
+        </property>
+        <property name="sodienthoai" type="string">
+            <column name="sodienthoai" length="15" not-null="true" />
+        </property>
+        <property name="diachi" type="string">
+            <column name="diachi" length="100" />
+        </property>
+        <property name="ngaytao" type="timestamp">
+            <column name="ngaytao" length="19" />
+        </property>
+        <property name="idtrangthai" type="string">
+            <column name="idtrangthai" length="10" not-null="true" />
+        </property>
+        <property name="avatar" type="string">
+            <column name="avatar" length="45" not-null="true" />
+        </property>
+        <set name="tbPhanhois" table="tb_phanhoi" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iduser" />
+            </key>
+            <one-to-many class="model.TbPhanhoi" />
+        </set>
+        <set name="tbTintucs" table="tb_tintuc" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iduser" not-null="true" />
+            </key>
+            <one-to-many class="model.TbTintuc" />
+        </set>
+    </class>
+</hibernate-mapping>

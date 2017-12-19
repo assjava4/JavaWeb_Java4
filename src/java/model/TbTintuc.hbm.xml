@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2017 1:46:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TbTintuc" table="tb_tintuc" catalog="db_tintuc" optimistic-lock="version">
+        <id name="idtintuc" type="java.lang.Integer">
+            <column name="idtintuc" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tbLoaitintuc" class="model.TbLoaitintuc" fetch="select">
+            <column name="idloaitin" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbUsers" class="model.TbUsers" fetch="select">
+            <column name="iduser" not-null="true" />
+        </many-to-one>
+        <property name="tentieude" type="string">
+            <column name="tentieude" length="250" not-null="true" unique="true" />
+        </property>
+        <property name="tomtatnd" type="string">
+            <column name="tomtatnd" length="65535" not-null="true" />
+        </property>
+        <property name="noidung" type="string">
+            <column name="noidung" not-null="true" />
+        </property>
+        <property name="ngaydang" type="timestamp">
+            <column name="ngaydang" length="19" not-null="true" />
+        </property>
+        <property name="hinhanh" type="string">
+            <column name="hinhanh" length="45" not-null="true" />
+        </property>
+        <property name="luotxem" type="int">
+            <column name="luotxem" not-null="true" />
+        </property>
+        <set name="tbBinhluans" table="tb_binhluan" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idtintuc" not-null="true" />
+            </key>
+            <one-to-many class="model.TbBinhluan" />
+        </set>
+    </class>
+</hibernate-mapping>

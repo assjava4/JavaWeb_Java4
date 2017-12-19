@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2017 1:46:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TbPhanhoi" table="tb_phanhoi" catalog="db_tintuc" optimistic-lock="version">
+        <id name="idphanhoi" type="java.lang.Integer">
+            <column name="idphanhoi" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tbUsers" class="model.TbUsers" fetch="select">
+            <column name="iduser" />
+        </many-to-one>
+        <property name="tieude" type="string">
+            <column name="tieude" length="250" not-null="true" />
+        </property>
+        <property name="noidung" type="string">
+            <column name="noidung" length="65535" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

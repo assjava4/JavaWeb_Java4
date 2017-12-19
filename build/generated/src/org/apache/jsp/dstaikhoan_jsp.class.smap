@@ -1,0 +1,42 @@
+SMAP
+dstaikhoan_jsp.java
+JSP
+*S JSP
+*F
++ 0 dstaikhoan.jsp
+dstaikhoan.jsp
++ 1 admin_headtag.jsp
+includes/admin_headtag.jsp
++ 2 admin_sidebar.jsp
+includes/admin_sidebar.jsp
++ 3 admin_menu.jsp
+includes/admin_menu.jsp
++ 4 admin_footer.jsp
+includes/admin_footer.jsp
++ 5 admin_footag.jsp
+includes/admin_footag.jsp
+*L
+5,12:56
+5#1,21:68
+16#0,11:88
+27,3:100
+29,3:103
+5#2,108:106
+31#0,2:213
+5#3,131:215
+32#0,26:345
+57,4:371
+60,3:375
+63,8:378,3
+71,3:402
+74,2:405,3
+76,4:411
+80,2:416
+81,4:418
+85,2:423
+86,7:425
+5#4,7:432
+92#0,3:438
+5#5,47:441
+94#0,4:487
+*E

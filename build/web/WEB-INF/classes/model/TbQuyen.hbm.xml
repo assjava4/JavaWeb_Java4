@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2017 1:46:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TbQuyen" table="tb_quyen" catalog="db_tintuc" optimistic-lock="version">
+        <id name="idquyen" type="java.lang.Integer">
+            <column name="idquyen" />
+            <generator class="identity" />
+        </id>
+        <property name="tenquyen" type="string">
+            <column name="tenquyen" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="mota" type="string">
+            <column name="mota" length="45" />
+        </property>
+        <set name="tbUserses" table="tb_users" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idquyen" not-null="true" />
+            </key>
+            <one-to-many class="model.TbUsers" />
+        </set>
+    </class>
+</hibernate-mapping>
