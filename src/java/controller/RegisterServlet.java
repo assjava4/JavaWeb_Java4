@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.TbUsers;
 import service.TbQuyenService;
-import service.md5;
+import service.MD5;
 import service.taikhoanService;
 
 /**
@@ -25,8 +24,7 @@ import service.taikhoanService;
 public class RegisterServlet extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -38,39 +36,40 @@ public class RegisterServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         taikhoanService taikhoansv = new taikhoanService();
-        String tennd, matkhau, email, hoten, sodt, diachi, avt, repw;
+        String tendangnhap, matkhau, email, hovaten, sodienthoai, diachi, avatar;
         int quyen, trangthai;
-        tennd = request.getParameter("tdn");
-        matkhau = request.getParameter("pwd");
-        repw = request.getParameter("rpwd");
-        email = request.getParameter("email");
-        hoten = request.getParameter("fullname");
-        sodt = request.getParameter("sdt");
-        diachi = request.getParameter("dt");
-//        avt = request.getParameter("photo");
         Date ngaytao = new Date();
-        HttpSession session = request.getSession();
 
-        if (matkhau.equals(repw)) {
-            TbQuyenService tbQuyenService = new TbQuyenService();
-            TbUsers us = new TbUsers();
-            String mkmh = md5.md5Encryption(matkhau);
-            
-            us.setTenuser(tennd);
-            us.setMatkhau(mkmh);
-            us.setEmail(email);
-            us.setHoten(hoten);
-            us.setSodienthoai(sodt);
-            us.setDiachi(diachi);
-            us.setNgaytao(ngaytao);
-            us.setTbQuyen(tbQuyenService.getTbQuyenById("1"));
-            us.setIdtrangthai("notactive");
-            us.setAvatar("avator.jpg");
-            taikhoansv.InsertUser(us);
+        tendangnhap = request.getParameter("tendangnhap");
+        matkhau = request.getParameter("matkhau");
+        email = request.getParameter("email");
+        hovaten = request.getParameter("hovaten");
+        sodienthoai = request.getParameter("sodienthoai");
+        diachi = request.getParameter("diachi");
+
+        TbQuyenService tbQuyenService = new TbQuyenService();
+        TbUsers us = new TbUsers();
+        String mkmh = MD5.Encoding(matkhau);
+
+        us.setTenuser(tendangnhap);
+        us.setMatkhau(mkmh);
+        us.setEmail(email);
+        us.setHoten(hovaten);
+        us.setSodienthoai(sodienthoai);
+        us.setDiachi(diachi);
+        us.setNgaytao(ngaytao);
+        us.setTbQuyen(tbQuyenService.getTbQuyenById("1"));
+        us.setIdtrangthai("notactive");
+        us.setAvatar("avator.jpg");
+
+        boolean rs = taikhoansv.InsertUser(us);
+        if (rs) {
+            System.out.println("Thanh cong");
             String url = "/index.jsp";
             getServletContext().getRequestDispatcher(url).forward(request, response);
         } else {
-             String url = "/register.jsp";
+            System.out.println("That bai");
+            String url = "/index.jsp";
             getServletContext().getRequestDispatcher(url).forward(request, response);
         }
 
