@@ -4,6 +4,8 @@
     Author     : DucHuy
 --%>
 
+<%@page import="model.*"%>
+<%@page import="service.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,12 @@
         <script src="//cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
     </head>
     <body class="cbp-spmenu-push">
-
+        <%
+            taikhoanService tk = new taikhoanService();
+            TbUsers user = null;
+            String userID = request.getParameter("iduser");
+            user = tk.GetUsersByID(userID);
+        %>
         <div class="main-content">
             <%@include file="includes/admin_sidebar.jsp" %>
             <%@include file="includes/admin_menu.jsp" %>
@@ -25,7 +32,8 @@
                     <div class="grids">
                         <div class="form-section">
                             <h2>Sửa Tài khoản</h2>
-                            <form action="editnewsServlet" method="post">
+                            <form action="edituserServlet" method="post" <%=user.getIduser()%>>
+                                <input style="display: none;" name="iduser" value="" />
                                 <div class="col-md-12 form-grid">
                                     <div class="form-grid1">
                                         <h4><span>Sửa Thông tin</span> Tài khoản</h4>
@@ -55,16 +63,6 @@
                                             </div>
                                             <div class="col-md-9 grid-form1">
                                                 <input type="text" placeholder="Tên đăng nhập" name="tendn" >
-                                                <span></span>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="bottom-form">
-                                            <div class="col-md-2 grid-form">
-                                                <h5>Mật khẩu</h5>
-                                            </div>
-                                            <div class="col-md-9 grid-form1">
-                                                <input type="text" placeholder="Mật khẩu" name="pwd" >
                                                 <span></span>
                                             </div>
                                             <div class="clearfix"></div>
@@ -112,7 +110,7 @@
                                     </div>
                                 </div>
                             </form>
-                        
+
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -121,6 +119,8 @@
 
             <%@include file="includes/admin_footer.jsp" %>
         </div>
+       
         <%@include file="includes/admin_footag.jsp" %>
+       
     </body>
 </html>

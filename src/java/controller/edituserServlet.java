@@ -11,16 +11,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.TbLoaitintuc;
-import model.TbTintuc;
-import service.LoaitinService;
-import service.tintucService;
+import model.TbUsers;
+import service.md5;
+import service.taikhoanService;
 
 /**
  *
  * @author DucHuy
  */
-public class editnewsServlet extends HttpServlet {
+public class edituserServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,30 +33,30 @@ public class editnewsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       request.setCharacterEncoding("utf-8");
-        tintucService TTService = new tintucService();
-
-        String  idtintuc = request.getParameter("idtintuc");
-        String tieude = request.getParameter("tieude");
-        String noidung = request.getParameter("noidung");
-        String motangan = request.getParameter("tomtat");
-        String hinhanh = request.getParameter("hinh");
-        int loaitin = Integer.parseInt(request.getParameter("loaitin"));
+     request.setCharacterEncoding("UTF-8");
+        
+        String hoten,tendn, email, sdt, diachi, hinh, iduser;
+        
+        hoten = request.getParameter("hoten");
+        tendn = request.getParameter("tendn");
+        email = request.getParameter("email");
+        sdt = request.getParameter("sdt");
+        diachi = request.getParameter("diachi");
+        hinh = request.getParameter("hinh");
+        
+        iduser = request.getParameter("iduser");
+        taikhoanService tk = new taikhoanService();
+        TbUsers us = tk.getTbUserById(iduser);
+        us.setHoten(hoten);
+        us.setTenuser(iduser);
+        us.setEmail(email);
+        us.setSodienthoai(diachi);
+        us.setDiachi(diachi);
+        us.setAvatar(iduser);
         
         
-            TbTintuc tt = new TbTintuc();
-            LoaitinService ltservice = new LoaitinService();
-            TbLoaitintuc ltt = ltservice.getTbLoaiTinById(loaitin);
-
-            tt.setTentieude(tieude);
-            tt.setTomtatnd(motangan);
-            tt.setNoidung(noidung);
-            tt.setHinhanh(hinhanh);
-            tt.setTbLoaitintuc(ltt);
-            TTService.InsertTinTuc(tt);
-            response.sendRedirect("suaNews.jsp");
-            //response.sendRedirect("./admin/QuanLyTinTuc.jsp");
-        
+        response.sendRedirect("editUsers.jsp");
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

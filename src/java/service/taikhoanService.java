@@ -88,27 +88,27 @@ public class taikhoanService {
         return false;
     }
 
-    public TbUsers getTbUserById(String idUser) {
-        Session session = NewHibernateUtil.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.getTransaction();
-            tx.begin();
-            String strQuery = "from TbUsers where iduser=" + idUser;
-            Query query = session.createQuery(strQuery);
-            TbUsers quyen = (TbUsers) query.uniqueResult();
-            tx.commit();
-            return quyen;
-        } catch (Exception e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-            System.out.println(e.toString());
-        } finally {
-            session.close();
-        }
-        return null;
-    }
+//    public TbUsers getTbUserById(String idUser) {
+//        Session session = NewHibernateUtil.getSessionFactory().openSession();
+//        Transaction tx = null;
+//        try {
+//            tx = session.getTransaction();
+//            tx.begin();
+//            String strQuery = "from TbUsers where iduser=" + idUser;
+//            Query query = session.createQuery(strQuery);
+//            TbUsers quyen = (TbUsers) query.uniqueResult();
+//            tx.commit();
+//            return quyen;
+//        } catch (Exception e) {
+//            if (tx != null) {
+//                tx.rollback();
+//            }
+//            System.out.println(e.toString());
+//        } finally {
+//            session.close();
+//        }
+//        return null;
+//    }
 
     public static  ArrayList<TbUsers> Getall() {
         Session session = NewHibernateUtil.getSessionFactory().openSession();
@@ -131,5 +131,27 @@ public class taikhoanService {
             session.close();
         }
         return null;
+    }
+      public TbUsers GetUsersByID(String userID) {
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            String strQuery = "from TbUsers where iduser=" + userID;
+            Query query = session.createQuery(strQuery);
+            TbUsers user = (TbUsers) query.uniqueResult();
+            tx.commit();
+            return user;
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            System.out.println(e.toString());
+        } finally {
+            session.close();
+        }
+        return null;
+
     }
 }

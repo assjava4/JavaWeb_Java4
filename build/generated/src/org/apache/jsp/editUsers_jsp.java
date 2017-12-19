@@ -3,6 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import model.TbUsers;
+import service.taikhoanService;
 
 public final class editUsers_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -53,6 +55,8 @@ public final class editUsers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -83,6 +87,13 @@ public final class editUsers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <script src=\"//cdn.ckeditor.com/4.8.0/standard/ckeditor.js\"></script>\n");
       out.write("    </head>\n");
       out.write("    <body class=\"cbp-spmenu-push\">\n");
+      out.write("        ");
+
+            taikhoanService tk = new taikhoanService();
+            TbUsers user = null;
+            String userID = request.getParameter("iduser");
+            user = tk.getTbUserById(idUser);
+        
       out.write("\n");
       out.write("        <div class=\"main-content\">\n");
       out.write("            ");
@@ -333,7 +344,8 @@ public final class editUsers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <div class=\"grids\">\n");
       out.write("                        <div class=\"form-section\">\n");
       out.write("                            <h2>Sửa Tài khoản</h2>\n");
-      out.write("                            <form action=\"editnewsServlet\" method=\"post\">\n");
+      out.write("                            <form action=\"edituserServlet\" method=\"post\">\n");
+      out.write("                                <input style=\"display: none;\" name=\"iduser\" value=\"\" />\n");
       out.write("                                <div class=\"col-md-12 form-grid\">\n");
       out.write("                                    <div class=\"form-grid1\">\n");
       out.write("                                        <h4><span>Sửa Thông tin</span> Tài khoản</h4>\n");
@@ -352,7 +364,7 @@ public final class editUsers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                <h5>Họ tên</h5>\n");
       out.write("                                            </div>\n");
       out.write("                                            <div class=\"col-md-9 grid-form1\">\n");
-      out.write("                                                <input type=\"text\" placeholder=\"Text\" name=\"hoten\" >\n");
+      out.write("                                                <input type=\"text\" placeholder=\"Họ tên\" name=\"hoten\" >\n");
       out.write("                                                <span></span>\n");
       out.write("                                            </div>\n");
       out.write("                                            <div class=\"clearfix\"></div>\n");
@@ -362,17 +374,7 @@ public final class editUsers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                <h5>Tên Đăng Nhập</h5>\n");
       out.write("                                            </div>\n");
       out.write("                                            <div class=\"col-md-9 grid-form1\">\n");
-      out.write("                                                <input type=\"text\" placeholder=\"Text\" name=\"tendn\" >\n");
-      out.write("                                                <span></span>\n");
-      out.write("                                            </div>\n");
-      out.write("                                            <div class=\"clearfix\"></div>\n");
-      out.write("                                        </div>\n");
-      out.write("                                        <div class=\"bottom-form\">\n");
-      out.write("                                            <div class=\"col-md-2 grid-form\">\n");
-      out.write("                                                <h5>Mật khẩu</h5>\n");
-      out.write("                                            </div>\n");
-      out.write("                                            <div class=\"col-md-9 grid-form1\">\n");
-      out.write("                                                <input type=\"text\" placeholder=\"Text\" name=\"pwd\" >\n");
+      out.write("                                                <input type=\"text\" placeholder=\"Tên đăng nhập\" name=\"tendn\" >\n");
       out.write("                                                <span></span>\n");
       out.write("                                            </div>\n");
       out.write("                                            <div class=\"clearfix\"></div>\n");
@@ -382,7 +384,7 @@ public final class editUsers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                <h5>Email</h5>\n");
       out.write("                                            </div>\n");
       out.write("                                            <div class=\"col-md-9 grid-form1\">\n");
-      out.write("                                                <input type=\"text\" placeholder=\"Text\" name=\"email\" >\n");
+      out.write("                                                <input type=\"text\" placeholder=\"Email\" name=\"email\" >\n");
       out.write("                                                <span></span>\n");
       out.write("                                            </div>\n");
       out.write("                                            <div class=\"clearfix\"></div>\n");
@@ -392,7 +394,7 @@ public final class editUsers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                <h5>Số điện thoai</h5>\n");
       out.write("                                            </div>\n");
       out.write("                                            <div class=\"col-md-9 grid-form1\">\n");
-      out.write("                                                <input type=\"text\" placeholder=\"Text\" name=\"sdt\" >\n");
+      out.write("                                                <input type=\"text\" placeholder=\"Số điện thoại\" name=\"sdt\" >\n");
       out.write("                                                <span></span>\n");
       out.write("                                            </div>\n");
       out.write("                                            <div class=\"clearfix\"></div>\n");
@@ -402,7 +404,7 @@ public final class editUsers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                <h5>Địa chỉ</h5>\n");
       out.write("                                            </div>\n");
       out.write("                                            <div class=\"col-md-9 grid-form1\">\n");
-      out.write("                                                <input type=\"text\" placeholder=\"Text\" name=\"diachi\" >\n");
+      out.write("                                                <input type=\"text\" placeholder=\"Địa chỉ\" name=\"diachi\" >\n");
       out.write("                                                <span></span>\n");
       out.write("                                            </div>\n");
       out.write("                                            <div class=\"clearfix\"></div>\n");
@@ -420,7 +422,7 @@ public final class editUsers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                    </div>\n");
       out.write("                                </div>\n");
       out.write("                            </form>\n");
-      out.write("                        \n");
+      out.write("\n");
       out.write("                            <div class=\"clearfix\"></div>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
@@ -436,6 +438,7 @@ public final class editUsers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</div>\n");
       out.write("\n");
       out.write("        </div>\n");
+      out.write("       \n");
       out.write("        ");
       out.write("\n");
       out.write("\n");
@@ -484,6 +487,7 @@ public final class editUsers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    </div>\n");
       out.write("</div>\n");
       out.write("\n");
+      out.write("       \n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
