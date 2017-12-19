@@ -46,11 +46,10 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db_tintuc?characterEncording=utf8</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">123456</property>
-    <mapping resource="model/TbBinhluan.hbm.xml"/>
-    <mapping resource="model/TbUsers.hbm.xml"/>
-    <mapping resource="model/TbPhanhoi.hbm.xml"/>
-    <mapping resource="model/TbLoaitintuc.hbm.xml"/>
     <mapping resource="model/TbTintuc.hbm.xml"/>
+    <mapping resource="model/TbUsers.hbm.xml"/>
+    <mapping resource="model/TbLoaitintuc.hbm.xml"/>
     <mapping resource="model/TbQuyen.hbm.xml"/>
+    <mapping resource="model/TbPhanhoi.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

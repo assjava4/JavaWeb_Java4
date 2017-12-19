@@ -5,13 +5,20 @@
  */
 package controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import model.TbUsers;
+import service.FileService;
 import service.md5;
 import service.taikhoanService;
 
@@ -19,8 +26,13 @@ import service.taikhoanService;
  *
  * @author DucHuy
  */
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024 * 10,
+        maxFileSize = 1024 * 1024 * 50,
+        maxRequestSize = 1024 * 1024 * 100
+)
 public class edituserServlet extends HttpServlet {
-
+private static final String UPLOAD_DIR = "images/";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,28 +47,33 @@ public class edituserServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
      request.setCharacterEncoding("UTF-8");
         
-        String hoten,tendn, email, sdt, diachi, hinh, iduser;
-        
+        String hoten, tendn, email, sdt, diachi, hinh, iduser;
+//        TbUsers tbus = new TbUsers();
         hoten = request.getParameter("hoten");
         tendn = request.getParameter("tendn");
         email = request.getParameter("email");
         sdt = request.getParameter("sdt");
         diachi = request.getParameter("diachi");
-        hinh = request.getParameter("hinh");
+//        hinh = request.getParameter("photo");
+        hinh = uploadFile(request);
         
         iduser = request.getParameter("iduser");
         taikhoanService tk = new taikhoanService();
-        TbUsers us = tk.getTbUserById(iduser);
+        
+        TbUsers us = tk.GetUsersByID(iduser);
         us.setHoten(hoten);
-        us.setTenuser(iduser);
+        us.setTenuser(tendn);
         us.setEmail(email);
-        us.setSodienthoai(diachi);
+        us.setSodienthoai(sdt);
         us.setDiachi(diachi);
-        us.setAvatar(iduser);
-        
-        
-        response.sendRedirect("editUsers.jsp");
-       
+        us.setAvatar(hinh);
+        boolean rs = tk.InsertUser(us); 
+          if (rs) {
+            response.sendRedirect("dstaikhoan.jsp");
+        } else {
+              response.sendRedirect("editUsers.jsp?iduser="+iduser);
+        }
+         
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -97,5 +114,46 @@ public class edituserServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+private String uploadFile(HttpServletRequest request) throws IOException, ServletException {
+        String fileName = "";
+        try {
+            Part filePart = request.getPart("photo");
 
+            //fileName: picture-001.jpg
+            fileName = filePart.getSubmittedFileName();
+            String filename = fileName;
+
+            //applicationPath: C:\Users\Lonely\Documents\NetBeansProjects\Shop_Bonfire\build\web
+            String applicationPath = request.getServletContext().getRealPath("");
+            fileName = FileService.ChangeFileName(fileName);
+            //File.separator: \ 
+            String basePath = applicationPath + File.separator + UPLOAD_DIR + File.separator;
+
+            InputStream inputStream = null;
+            OutputStream outputStream = null;
+            try {
+                File outputFilePath = new File(basePath + fileName);
+                inputStream = filePart.getInputStream();
+                outputStream = new FileOutputStream(outputFilePath);
+                int read = 0;
+                final byte[] bytes = new byte[1024];
+                while ((read = inputStream.read(bytes)) != -1) {
+                    outputStream.write(bytes, 0, read);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                fileName = "";
+            } finally {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+                if (outputStream != null) {
+                    outputStream.close();
+                }
+            }
+        } catch (Exception e) {
+            fileName = "";
+        }
+        return fileName;
+    }
 }

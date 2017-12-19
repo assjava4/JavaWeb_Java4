@@ -26,6 +26,7 @@
     <body class="cbp-spmenu-push">
         <%
             ArrayList<TbTintuc> arrayList = tintucService.Getall();
+            String folderupload = getServletContext().getInitParameter("file-upload");
             if (arrayList != null) {
         %>
         <div class="main-content">
@@ -48,8 +49,8 @@
                                         <th>Tóm tắt nội dung</th>
                                         <th>nội dung</th>
                                         <th>Ngày đăng</th>
-<!--                                        <th>Người đăng</th>-->
-<!--                                        <th>Loại tin</th>-->
+                                        <!--                                        <th>Người đăng</th>-->
+                                        <!--                                        <th>Loại tin</th>-->
                                         <th>Lượt xem</th>
                                         <th></th>
                                         <th></th>
@@ -61,16 +62,17 @@
                                 %>
                                 <tbody>
                                     <tr>
-                                        <td><%= tintuc.getHinhanh()%></td>
+                                        <td><img src="${pageContext.request.contextPath}/<%= folderupload%><%=tintuc.getHinhanh()%>" 
+                                                 width="80px" height="80px"/></td>
                                         <td><%= tintuc.getTentieude()%></td>
                                         <td><%= tintuc.getTomtatnd()%></td>
                                         <td><%= tintuc.getNoidung()%></td>
                                         <td><%= tintuc.getNgaydang()%></td>
-0<!--                                        <td></td>
-                                        <td></td>-->
+                                        0<!--                                        <td></td>
+                                                                                <td></td>-->
                                         <td><%= tintuc.getLuotxem()%></td>
 
-                                        <td><a href="<%= tintuc.getIdtintuc()%>">Sửa</td>  
+                                        <td><a href="suaNews.jsp?idtintuc=<%= tintuc.getIdtintuc()%>">Sửa</a></td>  
                                         <td><a href="<%= tintuc.getIdtintuc()%>">Xóa</td>  
 
                                     </tr>

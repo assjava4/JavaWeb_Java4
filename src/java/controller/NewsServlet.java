@@ -72,7 +72,7 @@ private static final String UPLOAD_DIR = "images/";
             tt.setNoidung(noidung);
             tt.setNgaydang(ngaydang);
             tt.setHinhanh(hinhanh);
-            tt.setTbUsers(tkservice.getTbUserById("4"));
+            tt.setTbUsers(tkservice.GetUsersByID("4"));
             tt.setTbLoaitintuc(ltt);
             tt.setLuotxem(luotxem);
             TTService.InsertTinTuc(tt);

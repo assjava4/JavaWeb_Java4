@@ -1,4 +1,3 @@
-0.222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222203
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <!--
@@ -43,9 +42,8 @@ Contributor(s):
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="db_tintuc"/>
   <table-filter match-name="tb_loaitintuc"/>
-  <table-filter match-name="tb_binhluan"/>
-  <table-filter match-name="tb_phanhoi"/>
   <table-filter match-name="tb_quyen"/>
-  <table-filter match-name="tb_users"/>
+  <table-filter match-name="tb_phanhoi"/>
   <table-filter match-name="tb_tintuc"/>
+  <table-filter match-name="tb_users"/>
 </hibernate-reverse-engineering>

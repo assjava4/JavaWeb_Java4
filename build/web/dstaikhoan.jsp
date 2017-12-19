@@ -25,6 +25,7 @@
     <body class="cbp-spmenu-push">
         <%
             ArrayList<TbUsers> arrayList = taikhoanService.Getall();
+            String folderupload = getServletContext().getInitParameter("file-upload");
             if (arrayList != null) {
         %>
         <div class="main-content">
@@ -60,7 +61,8 @@
                                 %>
                                 <tbody>
                                     <tr>
-                                        <td><%= taikhoan.getAvatar()%></td>
+                                        <td><img src="${pageContext.request.contextPath}/<%= folderupload%><%=taikhoan.getAvatar()%>" 
+                                                 width="80px" height="80px"/></td>
                                         <td><%= taikhoan.getHoten()%></td>
                                         <td><%= taikhoan.getTenuser()%></td>
                                         <td><%= taikhoan.getEmail()%></td>
@@ -68,11 +70,11 @@
                                         <td><%= taikhoan.getSodienthoai()%></td>
                                         <td><%= taikhoan.getDiachi()%></td>
                                         <td><%= taikhoan.getIdtrangthai()%></td>
-<!--                                        <td></td>
-                                        <td></td>-->
+                                        <!--                                        <td></td>
+                                                                                <td></td>-->
 
-                                        <td><a href="<%= taikhoan.getIduser()%>">Sửa</td>  
-                                        <td><a href="<%= taikhoan.getIduser()%>">Xóa</td>  
+                                        <td><a href="editUsers.jsp?iduser=<%=taikhoan.getIduser()%>">Sửa</a></td>  
+                                        <td><a href="">Xóa</td>  
 
                                     </tr>
                                 </tbody>

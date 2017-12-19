@@ -32,8 +32,8 @@
                     <div class="grids">
                         <div class="form-section">
                             <h2>Sửa Tài khoản</h2>
-                            <form action="edituserServlet" method="post" <%=user.getIduser()%>>
-                                <input style="display: none;" name="iduser" value="" />
+                            <form action="edituserServlet" method="post" enctype="multipart/form-data">
+                                <input style="display: none;" name="iduser" value="<%=user.getIduser()%>" />
                                 <div class="col-md-12 form-grid">
                                     <div class="form-grid1">
                                         <h4><span>Sửa Thông tin</span> Tài khoản</h4>
@@ -42,8 +42,7 @@
                                                 <h5>Hình ảnh</h5>
                                             </div>
                                             <div class="col-md-9 grid-form1">
-                                                <input type="text" placeholder="Text" name="hinh" >
-                                                <span></span>
+                                                <input type="file" id="exampleInputFile" name="photo" value="<%=user.getAvatar()%>">
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
@@ -52,7 +51,7 @@
                                                 <h5>Họ tên</h5>
                                             </div>
                                             <div class="col-md-9 grid-form1">
-                                                <input type="text" placeholder="Họ tên" name="hoten" >
+                                                <input type="text" placeholder="Họ tên" name="hoten" value="<%=user.getHoten()%>">
                                                 <span></span>
                                             </div>
                                             <div class="clearfix"></div>
@@ -62,7 +61,7 @@
                                                 <h5>Tên Đăng Nhập</h5>
                                             </div>
                                             <div class="col-md-9 grid-form1">
-                                                <input type="text" placeholder="Tên đăng nhập" name="tendn" >
+                                                <input type="text" placeholder="Tên đăng nhập" name="tendn" value="<%=user.getTenuser()%>">
                                                 <span></span>
                                             </div>
                                             <div class="clearfix"></div>
@@ -72,7 +71,7 @@
                                                 <h5>Email</h5>
                                             </div>
                                             <div class="col-md-9 grid-form1">
-                                                <input type="text" placeholder="Email" name="email" >
+                                                <input type="text" placeholder="Email" name="email" value="<%=user.getEmail()%>">
                                                 <span></span>
                                             </div>
                                             <div class="clearfix"></div>
@@ -82,7 +81,7 @@
                                                 <h5>Số điện thoai</h5>
                                             </div>
                                             <div class="col-md-9 grid-form1">
-                                                <input type="text" placeholder="Số điện thoại" name="sdt" >
+                                                <input type="text" placeholder="Số điện thoại" name="sdt" value="<%=user.getSodienthoai()%>">
                                                 <span></span>
                                             </div>
                                             <div class="clearfix"></div>
@@ -92,7 +91,7 @@
                                                 <h5>Địa chỉ</h5>
                                             </div>
                                             <div class="col-md-9 grid-form1">
-                                                <input type="text" placeholder="Địa chỉ" name="diachi" >
+                                                <input type="text" placeholder="Địa chỉ" name="diachi" value="<%=user.getDiachi()%>">
                                                 <span></span>
                                             </div>
                                             <div class="clearfix"></div>
@@ -119,8 +118,8 @@
 
             <%@include file="includes/admin_footer.jsp" %>
         </div>
-       
+
         <%@include file="includes/admin_footag.jsp" %>
-       
+
     </body>
 </html>
