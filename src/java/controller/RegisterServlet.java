@@ -7,15 +7,14 @@ package controller;
 
 import java.io.IOException;
 import java.util.Date;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import model.RandomString;
 import model.TbUsers;
-import service.TbQuyenService;
-import service.MD5;
-import service.taikhoanService;
+import service.*;
 
 /**
  *
@@ -50,6 +49,8 @@ public class RegisterServlet extends HttpServlet {
         TbQuyenService tbQuyenService = new TbQuyenService();
         TbUsers us = new TbUsers();
         String mkmh = MD5.Encoding(matkhau);
+        
+        String random = RandomString.randomString(10);
 
         us.setTenuser(tendangnhap);
         us.setMatkhau(mkmh);
@@ -61,9 +62,37 @@ public class RegisterServlet extends HttpServlet {
         us.setTbQuyen(tbQuyenService.getTbQuyenById("3"));
         us.setIdtrangthai("notactive");
         us.setAvatar("avator.jpg");
+        us.setRandomkey(random);
 
         boolean rs = taikhoansv.InsertUser(us);
         if (rs) {
+
+            ServletContext context = getServletContext();
+
+            String host = context.getInitParameter("host");
+            String port = context.getInitParameter("port");
+            String user = context.getInitParameter("user");
+            String pass = context.getInitParameter("pass");
+
+            String chude = "Xác nhận tài khoản";
+            String message = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+				+ request.getContextPath() + "/xacnhantaikhoan.jsp?key=" + random;
+
+            String resultMessage = "";
+
+            try {
+                RegisterMailService.SendingMail(user, pass, host, port, chude, hovaten, message, email);
+                resultMessage = "The e-mail was sent successfully";
+                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                resultMessage = "There were an error: " + ex.getMessage();
+                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            } finally {
+                //request.setAttribute("Message", resultMessage);
+                System.out.println(resultMessage);
+            }
+
             System.out.println("Thanh cong");
             String url = "/index.jsp";
             getServletContext().getRequestDispatcher(url).forward(request, response);

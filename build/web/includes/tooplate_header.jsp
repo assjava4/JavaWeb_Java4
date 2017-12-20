@@ -11,6 +11,6 @@
 <!DOCTYPE html>
 <div id="tooplate_header">
     <div id="site_title">
-        <h1><a href="#">Technews</a></h1>
+        <h1><a href="index.jsp">Technews</a></h1>
     </div>
 </div>

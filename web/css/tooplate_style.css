@@ -494,6 +494,10 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
     margin-top: 20px;
 }
 
+.error {
+    color: red;
+}
+
 
 /* POPUP LOGIN - POPUP REGISTER - POPUP RESETPASSWORD CSS */
 /* Full-width input fields */

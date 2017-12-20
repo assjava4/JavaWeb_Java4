@@ -17,12 +17,12 @@
         <servlet-class>controller.edituserServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>RegisterMailServlet</servlet-name>
-        <servlet-class>controller.RegisterMailServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>DeletenewServlet</servlet-name>
         <servlet-class>controller.DeletenewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>controller.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -41,12 +41,12 @@
         <url-pattern>/edituserServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>RegisterMailServlet</servlet-name>
-        <url-pattern>/RegisterMailServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>DeletenewServlet</servlet-name>
         <url-pattern>/DeletenewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

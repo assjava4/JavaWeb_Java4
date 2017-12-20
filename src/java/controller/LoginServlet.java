@@ -6,18 +6,21 @@
 package controller;
 
 import java.io.IOException;
-import javax.servlet.ServletContext;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import service.RegisterMailService;
+import javax.servlet.http.HttpSession;
+import model.TbUsers;
+import service.MD5;
+import service.taikhoanService;
 
 /**
  *
  * @author DuongNguyen
  */
-public class RegisterMailServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -30,35 +33,36 @@ public class RegisterMailServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
         
-        ServletContext context = getServletContext();
-        
-        String host = context.getInitParameter("host");
-        String port = context.getInitParameter("port");
-        String user = context.getInitParameter("user");
-        String pass = context.getInitParameter("pass");
-        
-        String recipient = "duongnxpk00662@fpt.edu.vn";
-        String chude = "Chủ đề người dùng nhập";
-        String email = "Email người dùng nhập";
-        String name = "Tên người dùng";
-        String message = request.getParameter("uname");
-        System.out.println(message);
+        String username, password;
+        username = request.getParameter("uname");
+        password = request.getParameter("psw");
 
-        String resultMessage = "";
+        boolean KiemTra;
+        String passmahoa = MD5.Encoding(password);
+        taikhoanService tk = new taikhoanService();
+        KiemTra = tk.CheckLogin(username, passmahoa);
 
-        try {
-            RegisterMailService.SendingMail(user,pass,host,port,chude,email,message,recipient);
-            resultMessage = "The e-mail was sent successfully";
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            resultMessage = "There were an error: " + ex.getMessage();
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-        } finally {
-            //request.setAttribute("Message", resultMessage);
-            System.out.println(resultMessage);
+        HttpSession session = request.getSession();
+        
+        if (KiemTra) {
+            if (session.getAttribute("usName") != null) {
+                String usname = (String) session.getAttribute("usName");
+                System.out.println(usname);
+                if (usname.equals(username)) {
+                    String url = "/ErrorSession.jsp";
+                    getServletContext().getRequestDispatcher(url).forward(request, response);
+                }
+            }
+            session.setAttribute("usName", username);
+            TbUsers taikhoan = tk.GetUsersByEmailorUsersName(username);
+            session.setAttribute("userlog_role", taikhoan.getTbQuyen().getIdquyen());
+            session.setAttribute("userlog_trangthai", taikhoan.getIdtrangthai());
+            System.out.println("Danh nhap thanh cong");
+            response.sendRedirect("index.jsp");
+        } else {
+            System.out.println("Danh nhap that bai");
+            response.sendRedirect("index.jsp");
         }
     }
 

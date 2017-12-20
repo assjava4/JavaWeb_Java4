@@ -3,17 +3,15 @@ $().ready(function () {
     // validate signup form on keyup and submit
     $("#signupForm").validate({
         rules: {
-            firstname: "required",
-            lastname: "required",
-            username: {
-                required: true,
-                minlength: 2
-            },
-            password: {
+            tendangnhap: {
                 required: true,
                 minlength: 5
             },
-            confirm_password: {
+            matkhau: {
+                required: true,
+                minlength: 5
+            },
+            rematkhau: {
                 required: true,
                 minlength: 5,
                 equalTo: "#password"
@@ -22,31 +20,51 @@ $().ready(function () {
                 required: true,
                 email: true
             },
-            topic: {
-                required: "#newsletter:checked",
-                minlength: 2
+            hovaten: {
+                required: true,
+                minlength: 5
             },
-            agree: "required"
+            sodienthoai: {
+                required: true,
+                number : true,
+                minlength: 5
+            },
+            diachi: {
+                required: true,
+                minlength: 5
+            }
         },
         messages: {
-            firstname: "Please enter your firstname",
-            lastname: "Please enter your lastname",
-            username: {
-                required: "Please enter a username",
-                minlength: "Your username must consist of at least 2 characters"
+            tendangnhap: {
+                required: 'Vui lòng nhập tên đăng nhập',
+                minlength: 'Vui lòng nhập ít nhất 5 ký tự'
             },
-            password: {
-                required: "Please provide a password",
-                minlength: "Your password must be at least 5 characters long"
+            matkhau: {
+                required: 'Vui lòng nhập mật khẩu',
+                minlength: 'Vui lòng nhập ít nhất 5 ký tự'
             },
-            confirm_password: {
-                required: "Please provide a password",
-                minlength: "Your password must be at least 5 characters long",
-                equalTo: "Please enter the same password as above"
+            rematkhau: {
+                required: 'Vui lòng nhập lại mật khẩu',
+                minlength: 'Vui lòng nhập ít nhất 5 ký tự',
+                equalTo: 'Mật khẩu không trùng khớp'
             },
-            email: "Please enter a valid email address",
-            agree: "Please accept our policy",
-            topic: "Please select at least 2 topics"
+            email: {
+                required: 'Vui lòng nhập email',
+                email: 'Email chưa đúng định dạng'
+            },
+            hovaten: {
+                required: 'Vui lòng nhập họ và tên',
+                minlength: 'Vui lòng nhập ít nhất 5 ký tự'
+            },
+            sodienthoai: {
+                required: 'Vui lòng nhập số điện thoại',
+                number : 'Vui lòng chỉ nhập số',
+                minlength: 'Vui lòng nhập ít nhất 5 ký tự'
+            },
+            diachi: {
+                required: 'Vui lòng nhập địa chỉ',
+                minlength: 'Vui lòng nhập ít nhất 5 ký tự'
+            }
         }
     });
     

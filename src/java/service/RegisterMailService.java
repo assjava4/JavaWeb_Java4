@@ -36,7 +36,7 @@ public class RegisterMailService {
             final String password,
             String host, String port,
             String ChuDe,
-            String Email,
+            String hovaten,
             String message,
             String toAddress) throws AddressException,
             MessagingException {
@@ -71,7 +71,9 @@ public class RegisterMailService {
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(messageBodyPart);
             msg.setContent(multipart);
-            msg.setContent("Email address submitted: " + Email + "\nNội dung phản hồi:\n" + message, "text/plain; charset=UTF-8");
+            msg.setContent("Cảm ơn: " + hovaten + " đã đăng ký tại TechNews"
+                    + "\nBạn vui lòng nhấn vào liên kết phía dưới để xác nhận tài khoản:"
+                    + "\n" + message, "text/plain; charset=UTF-8");
 
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(RegisterMailService.class.getName()).log(Level.SEVERE, null, ex);

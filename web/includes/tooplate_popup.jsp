@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <!-- begin login popup -->
 <div id="loginpp" class="modal">
-    <form class="modal-content animate" action="/action_page.php">
+    <form class="modal-content animate" action="LoginServlet" method="POST">
         <div class="imgcontainer">
             <span onclick="hiddenPopup()" class="close" title="Close Modal">&times;</span>
             <img src="images/tooplate_logo.png" alt="Avatar" class="avatar">
@@ -42,9 +42,9 @@
         </div>
 
         <div class="container">
-            <input type="text" placeholder="Nhập tên đăng nhập" name="firstname" required>
             <input type="text" placeholder="Nhập tên đăng nhập" name="tendangnhap" required>
-            <input type="password" placeholder="Nhập mật khẩu" name="matkhau" required>
+            <input id="password" type="password" placeholder="Nhập mật khẩu" name="matkhau" required>
+            <input type="password" placeholder="Nhập mật khẩu" name="rematkhau" required>
             <input type="email" placeholder="Nhập email của bạn" name="email" required>
             <input type="text" placeholder="Nhập họ và tên" name="hovaten" required>
             <input type="text" placeholder="Nhập số điện thoại" name="sodienthoai" required>
@@ -55,7 +55,7 @@
 
         <div class="container" style="background-color:#f1f1f1">
             <button type="button" onclick="hiddenPopup()" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a onclick="showRForgotPopup()" style="cursor: pointer;">Password?</a></span>
+            <span class="psw">Quên <a onclick="showRForgotPopup()" style="cursor: pointer;">Mật khẩu?</a></span>
         </div>
     </form>
 </div>

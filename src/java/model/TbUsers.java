@@ -1,5 +1,5 @@
 package model;
-// Generated Dec 20, 2017 1:29:22 AM by Hibernate Tools 4.3.1
+// Generated Dec 20, 2017 11:02:09 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -23,6 +23,7 @@ public class TbUsers  implements java.io.Serializable {
      private Date ngaytao;
      private String idtrangthai;
      private String avatar;
+     private String randomkey;
      private Set<TbPhanhoi> tbPhanhois = new HashSet<TbPhanhoi>(0);
      private Set<TbTintuc> tbTintucs = new HashSet<TbTintuc>(0);
 
@@ -40,7 +41,7 @@ public class TbUsers  implements java.io.Serializable {
         this.idtrangthai = idtrangthai;
         this.avatar = avatar;
     }
-    public TbUsers(TbQuyen tbQuyen, String tenuser, String matkhau, String email, String hoten, String sodienthoai, String diachi, Date ngaytao, String idtrangthai, String avatar, Set<TbPhanhoi> tbPhanhois, Set<TbTintuc> tbTintucs) {
+    public TbUsers(TbQuyen tbQuyen, String tenuser, String matkhau, String email, String hoten, String sodienthoai, String diachi, Date ngaytao, String idtrangthai, String avatar, String randomkey, Set<TbPhanhoi> tbPhanhois, Set<TbTintuc> tbTintucs) {
        this.tbQuyen = tbQuyen;
        this.tenuser = tenuser;
        this.matkhau = matkhau;
@@ -51,6 +52,7 @@ public class TbUsers  implements java.io.Serializable {
        this.ngaytao = ngaytao;
        this.idtrangthai = idtrangthai;
        this.avatar = avatar;
+       this.randomkey = randomkey;
        this.tbPhanhois = tbPhanhois;
        this.tbTintucs = tbTintucs;
     }
@@ -131,6 +133,13 @@ public class TbUsers  implements java.io.Serializable {
     
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+    public String getRandomkey() {
+        return this.randomkey;
+    }
+    
+    public void setRandomkey(String randomkey) {
+        this.randomkey = randomkey;
     }
     public Set<TbPhanhoi> getTbPhanhois() {
         return this.tbPhanhois;

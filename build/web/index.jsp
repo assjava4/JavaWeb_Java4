@@ -77,16 +77,16 @@
                             <p><%=tintucMB.getNgaydang()%> || Lượt xem: <%=tintucMB.getLuotxem()%></p>
                             <p><%=tintucMB.getTomtatnd()%>
                             </p>
-                            
+
                             <a href="#">Read more</a>
                         </div>
                         <br>
                         <%
-                        }
+                            }
                         %>
                         <a href="#" class="float_r">Read more</a>
                     </div>
-                        
+
                     <div class="content_box">
                         <h2>Tin Mobile</h2>
                         <%
@@ -103,7 +103,7 @@
                         </div>
                         <br>
                         <%
-                        }
+                            }
                         %>
                         <a href="#" class="float_r">Read more</a>
                     </div>
