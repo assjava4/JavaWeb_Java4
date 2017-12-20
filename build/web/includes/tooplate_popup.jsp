@@ -35,13 +35,14 @@
 
 <!-- begin register popup -->
 <div id="registerpp" class="modal">
-    <form class="modal-content animate" action="RegisterServlet" method="POST">
+    <form id="signupForm" class="modal-content animate" action="RegisterServlet" method="POST">
         <div class="imgcontainer">
             <span onclick="hiddenPopup()" class="close" title="Close Modal">&times;</span>
             <img src="images/tooplate_logo.png" alt="Avatar" class="avatar">
         </div>
 
         <div class="container">
+            <input type="text" placeholder="Nhập tên đăng nhập" name="firstname" required>
             <input type="text" placeholder="Nhập tên đăng nhập" name="tendangnhap" required>
             <input type="password" placeholder="Nhập mật khẩu" name="matkhau" required>
             <input type="email" placeholder="Nhập email của bạn" name="email" required>
