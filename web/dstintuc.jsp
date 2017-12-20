@@ -64,12 +64,10 @@
                                     <tr>
                                         <td><img src="${pageContext.request.contextPath}/<%= folderupload%><%=tintuc.getHinhanh()%>" 
                                                  width="80px" height="80px"/></td>
-                                        <td><%= tintuc.getTentieude()%></td>
-                                        <td><%= tintuc.getTomtatnd()%></td>
-                                        <td><%= tintuc.getNoidung()%></td>
+                                        <td><%= tintuc.getTentieude().substring(0,20)%></td>
+                                        <td><%= tintuc.getTomtatnd().substring(0,20)%>...</td>
+                                        <td><%= tintuc.getNoidung().substring(0,50)%>...</td>
                                         <td><%= tintuc.getNgaydang()%></td>
-                                        0<!--                                        <td></td>
-                                                                                <td></td>-->
                                         <td><%= tintuc.getLuotxem()%></td>
 
                                         <td><a href="suaNews.jsp?idtintuc=<%= tintuc.getIdtintuc()%>">Sửa</a></td>  
