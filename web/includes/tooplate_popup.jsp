@@ -62,7 +62,7 @@
 
 <!-- begin forgot popup -->
 <div id="forgotpp" class="modal">
-    <form class="modal-content animate" action="/action_page.php">
+    <form class="modal-content animate" action="RegisterMailServlet" method="POST">
         <div class="imgcontainer">
             <span onclick="hiddenPopup()" class="close" title="Close Modal">&times;</span>
             <img src="images/tooplate_logo.png" alt="Avatar" class="avatar">

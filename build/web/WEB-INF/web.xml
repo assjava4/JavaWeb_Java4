@@ -16,6 +16,10 @@
         <servlet-name>edituserServlet</servlet-name>
         <servlet-class>controller.edituserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterMailServlet</servlet-name>
+        <servlet-class>controller.RegisterMailServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -32,16 +36,38 @@
         <servlet-name>edituserServlet</servlet-name>
         <url-pattern>/edituserServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterMailServlet</servlet-name>
+        <url-pattern>/RegisterMailServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <!-- Upload files -->
     <context-param>
         <description>Location to store upload file</description>
         <param-name>file-upload</param-name>
         <param-value>
             images/
         </param-value>
+    </context-param>
+    <!-- Send mail -->
+    <context-param>
+        <param-name>host</param-name>
+        <param-value>smtp.gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>port</param-name>
+        <param-value>587</param-value>
+    </context-param>
+    <context-param>
+        <param-name>user</param-name>
+        <param-value>kakaassasin123@gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>pass</param-name>
+        <param-value>aimabietyeu@123</param-value>
     </context-param>
 </web-app>
