@@ -158,6 +158,8 @@ public class tintucService {
 
         return Listtintuc;
     }
+    
+    //
     public static ArrayList<TbTintuc> Getall() {
         Session session = NewHibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -180,6 +182,34 @@ public class tintucService {
         }
         return null;
     }
+    
+    //Lấy tin mobile
+
+    
+        public ArrayList<TbTintuc> Getalltinbyluotxem() {
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            String string = "from TbTintuc order by luotxem desc";
+            Query query = session.createQuery(string);
+
+            ArrayList<TbTintuc> arrayList = (ArrayList<TbTintuc>) query.list();
+            if (arrayList != null) {
+                return arrayList;
+            }
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+        
+        
     public TbTintuc getOnebyid(String id) {
        Session session = NewHibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -223,4 +253,5 @@ public class tintucService {
         return null;
 
     }
+    
 }

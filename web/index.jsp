@@ -4,6 +4,10 @@
     Author     : DucHuy
 --%>
 
+<%@page import="service.LoaitinService"%>
+<%@page import="model.*"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="service.tintucService"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,230 +30,78 @@
             <!-- begin of middle -->
             <%@include file="includes/tooplate_middle.jsp" %>
             <!-- / end of middle -->
+            <%
+                tintucService ttService = new tintucService();
 
+                ArrayList<TbTintuc> Listxemnhieu = null;
+                ArrayList<TbTintuc> ListTinMB = null;
+                ArrayList<TbTintuc> ListTinICT = null;
+
+                Listxemnhieu = ttService.Getalltinbyluotxem();
+                ListTinMB = ttService.GetAllTinTucTheoIdLoaiTin(2);
+                ListTinICT = ttService.GetAllTinTucTheoIdLoaiTin(1);
+            %>
             <div id="tooplate_main">
                 <div class="col_w300 float_l">
                     <h2>Tin nổi bật</h2>
+                    <%
+                        for (int i = 0; i <= 7; i++) {
+                            TbTintuc tintuc = Listxemnhieu.get(i);
+                    %>
                     <div class="tinnoibat">
                         <div class="image_wrapper">
                             <a style="display: flex;" href="#">
-                                <img src="images/tooplate_image_01.jpg" alt="Image 01" width="280px" height="150px"/>
+                                <img src="images/<%=tintuc.getHinhanh()%>" alt="Image 01" width="280px" height="150px"/>
                             </a>
                         </div>
-                        <p><em>Etiam ut urna ante, ut pulvinar ante. Vivamus a metus quam. A enean non eros nunc. </em></p>
-                        <p align="justify">Floral Design is  free website template for everyone. You may edit and apply this web template for any purpose. Credit goes to <a rel="nofollow" href="http://www.photovaco.com">Free Photos</a> for photos. Nunc risus tortor, posuere a cursus sit amet.</p>
+                        <p><em><%=tintuc.getTentieude()%></em></p>
+                        <p align="justify"><%=tintuc.getTomtatnd()%></p>
                         <a href="#" class="more">Read more</a>
                     </div>
-                    <div class="tinnoibat">
-                        <div class="image_wrapper">
-                            <a style="display: flex;" href="#">
-                                <img src="images/tooplate_image_01.jpg" alt="Image 01" width="280px" height="150px"/>
-                            </a>
-                        </div>
-                        <p><em>Etiam ut urna ante, ut pulvinar ante. Vivamus a metus quam. A enean non eros nunc. </em></p>
-                        <p align="justify">Floral Design is  free website template for everyone. You may edit and apply this web template for any purpose. Credit goes to <a rel="nofollow" href="http://www.photovaco.com">Free Photos</a> for photos. Nunc risus tortor, posuere a cursus sit amet.</p>
-                        <a href="#" class="more">Read more</a>
-                    </div>
-                    <div class="tinnoibat">
-                        <div class="image_wrapper">
-                            <a style="display: flex;" href="#">
-                                <img src="images/tooplate_image_01.jpg" alt="Image 01" width="280px" height="150px"/>
-                            </a>
-                        </div>
-                        <p><em>Etiam ut urna ante, ut pulvinar ante. Vivamus a metus quam. A enean non eros nunc. </em></p>
-                        <p align="justify">Floral Design is  free website template for everyone. You may edit and apply this web template for any purpose. Credit goes to <a rel="nofollow" href="http://www.photovaco.com">Free Photos</a> for photos. Nunc risus tortor, posuere a cursus sit amet.</p>
-                        <a href="#" class="more">Read more</a>
-                    </div>
-                    <div class="tinnoibat">
-                        <div class="image_wrapper">
-                            <a style="display: flex;" href="#">
-                                <img src="images/tooplate_image_01.jpg" alt="Image 01" width="280px" height="150px"/>
-                            </a>
-                        </div>
-                        <p><em>Etiam ut urna ante, ut pulvinar ante. Vivamus a metus quam. A enean non eros nunc. </em></p>
-                        <p align="justify">Floral Design is  free website template for everyone. You may edit and apply this web template for any purpose. Credit goes to <a rel="nofollow" href="http://www.photovaco.com">Free Photos</a> for photos. Nunc risus tortor, posuere a cursus sit amet.</p>
-                        <a href="#" class="more">Read more</a>
-                    </div>
-                    <div class="tinnoibat">
-                        <div class="image_wrapper">
-                            <a style="display: flex;" href="#">
-                                <img src="images/tooplate_image_01.jpg" alt="Image 01" width="280px" height="150px"/>
-                            </a>
-                        </div>
-                        <p><em>Etiam ut urna ante, ut pulvinar ante. Vivamus a metus quam. A enean non eros nunc. </em></p>
-                        <p align="justify">Floral Design is  free website template for everyone. You may edit and apply this web template for any purpose. Credit goes to <a rel="nofollow" href="http://www.photovaco.com">Free Photos</a> for photos. Nunc risus tortor, posuere a cursus sit amet.</p>
-                        <a href="#" class="more">Read more</a>
-                    </div>
-                    <div class="tinnoibat">
-                        <div class="image_wrapper">
-                            <a style="display: flex;" href="#">
-                                <img src="images/tooplate_image_01.jpg" alt="Image 01" width="280px" height="150px"/>
-                            </a>
-                        </div>
-                        <p><em>Etiam ut urna ante, ut pulvinar ante. Vivamus a metus quam. A enean non eros nunc. </em></p>
-                        <p align="justify">Floral Design is  free website template for everyone. You may edit and apply this web template for any purpose. Credit goes to <a rel="nofollow" href="http://www.photovaco.com">Free Photos</a> for photos. Nunc risus tortor, posuere a cursus sit amet.</p>
-                        <a href="#" class="more">Read more</a>
-                    </div>
-                    <div class="tinnoibat">
-                        <div class="image_wrapper">
-                            <a style="display: flex;" href="#">
-                                <img src="images/tooplate_image_01.jpg" alt="Image 01" width="280px" height="150px"/>
-                            </a>
-                        </div>
-                        <p><em>Etiam ut urna ante, ut pulvinar ante. Vivamus a metus quam. A enean non eros nunc. </em></p>
-                        <p align="justify">Floral Design is  free website template for everyone. You may edit and apply this web template for any purpose. Credit goes to <a rel="nofollow" href="http://www.photovaco.com">Free Photos</a> for photos. Nunc risus tortor, posuere a cursus sit amet.</p>
-                        <a href="#" class="more">Read more</a>
-                    </div>
-                    <div class="tinnoibat">
-                        <div class="image_wrapper">
-                            <a style="display: flex;" href="#">
-                                <img src="images/tooplate_image_01.jpg" alt="Image 01" width="280px" height="150px"/>
-                            </a>
-                        </div>
-                        <p><em>Etiam ut urna ante, ut pulvinar ante. Vivamus a metus quam. A enean non eros nunc. </em></p>
-                        <p align="justify">Floral Design is  free website template for everyone. You may edit and apply this web template for any purpose. Credit goes to <a rel="nofollow" href="http://www.photovaco.com">Free Photos</a> for photos. Nunc risus tortor, posuere a cursus sit amet.</p>
-                        <a href="#" class="more">Read more</a>
-                    </div>
+                    <%
+                        }
+                    %>
                 </div>
 
                 <div class="col_w600 float_r">
                     <div class="content_box">
                         <h2>Tin ICT</h2>
+                        <%
+                            for (int i = 0; i <= 5; i++) {
+                                TbTintuc tintucMB = ListTinMB.get(i);
+                        %>
                         <div class="tinict">
-                            <img class="image_wrapper image_fl" src="images/tooplate_image_04.jpg" alt="Image 04" width="280px" height="150px"/>
-                            <p><em>Pellentesque at lectus justo. Sed et tellus diam. Nunc consequat eleifend mattis. Sed sed justo leo. </em></p>
-                            <p>Nunc euismod lectus eu neque ultrices laoreet. Aenean <a href="#">et velit tincidunt</a> 
-                                ante porttitor facilisis. Quisque in turpis vitae enim blandit vehicula.
+                            <img class="image_wrapper image_fl" src="images/<%=tintucMB.getHinhanh()%>" alt="Image 04" width="280px" height="150px"/>
+                            <p><em><%=tintucMB.getTentieude()%> </em></p>
+                            <p><%=tintucMB.getTomtatnd()%>
                             </p>
-                            <p>Nullam a tortor est, congue fermentum nisi. Maecenas nulla nulla, lobortis eu volutpat euismod, 
-                                <a href="#">scelerisque ut dui</a>. Integer luctus tellus ac mi malesuada dignissim. Sed id diam dui.
-                                In ut nunc urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            </p>
+                            
                             <a href="#">Read more</a>
                         </div>
                         <br>
-                        <div class="tinict">
-                            <img class="image_wrapper image_fl" src="images/tooplate_image_04.jpg" alt="Image 04" width="280px" height="150px"/>
-                            <p><em>Pellentesque at lectus justo. Sed et tellus diam. Nunc consequat eleifend mattis. Sed sed justo leo. </em></p>
-                            <p>Nunc euismod lectus eu neque ultrices laoreet. Aenean <a href="#">et velit tincidunt</a> 
-                                ante porttitor facilisis. Quisque in turpis vitae enim blandit vehicula.
-                            </p>
-                            <p>Nullam a tortor est, congue fermentum nisi. Maecenas nulla nulla, lobortis eu volutpat euismod, 
-                                <a href="#">scelerisque ut dui</a>. Integer luctus tellus ac mi malesuada dignissim. Sed id diam dui.
-                                In ut nunc urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            </p>
-                            <a href="#">Read more</a>
-                        </div>
-                        <br>
-                        <div class="tinict">
-                            <img class="image_wrapper image_fl" src="images/tooplate_image_04.jpg" alt="Image 04" width="280px" height="150px"/>
-                            <p><em>Pellentesque at lectus justo. Sed et tellus diam. Nunc consequat eleifend mattis. Sed sed justo leo. </em></p>
-                            <p>Nunc euismod lectus eu neque ultrices laoreet. Aenean <a href="#">et velit tincidunt</a> 
-                                ante porttitor facilisis. Quisque in turpis vitae enim blandit vehicula.
-                            </p>
-                            <p>Nullam a tortor est, congue fermentum nisi. Maecenas nulla nulla, lobortis eu volutpat euismod, 
-                                <a href="#">scelerisque ut dui</a>. Integer luctus tellus ac mi malesuada dignissim. Sed id diam dui.
-                                In ut nunc urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            </p>
-                            <a href="#">Read more</a>
-                        </div>
-                        <br>
-                        <div class="tinict">
-                            <img class="image_wrapper image_fl" src="images/tooplate_image_04.jpg" alt="Image 04" width="280px" height="150px"/>
-                            <p><em>Pellentesque at lectus justo. Sed et tellus diam. Nunc consequat eleifend mattis. Sed sed justo leo. </em></p>
-                            <p>Nunc euismod lectus eu neque ultrices laoreet. Aenean <a href="#">et velit tincidunt</a> 
-                                ante porttitor facilisis. Quisque in turpis vitae enim blandit vehicula.
-                            </p>
-                            <p>Nullam a tortor est, congue fermentum nisi. Maecenas nulla nulla, lobortis eu volutpat euismod, 
-                                <a href="#">scelerisque ut dui</a>. Integer luctus tellus ac mi malesuada dignissim. Sed id diam dui.
-                                In ut nunc urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            </p>
-                            <a href="#">Read more</a>
-                        </div>
-                        <br>
-                        <div class="tinict">
-                            <img class="image_wrapper image_fl" src="images/tooplate_image_04.jpg" alt="Image 04" width="280px" height="150px"/>
-                            <p><em>Pellentesque at lectus justo. Sed et tellus diam. Nunc consequat eleifend mattis. Sed sed justo leo. </em></p>
-                            <p>Nunc euismod lectus eu neque ultrices laoreet. Aenean <a href="#">et velit tincidunt</a> 
-                                ante porttitor facilisis. Quisque in turpis vitae enim blandit vehicula.
-                            </p>
-                            <p>Nullam a tortor est, congue fermentum nisi. Maecenas nulla nulla, lobortis eu volutpat euismod, 
-                                <a href="#">scelerisque ut dui</a>. Integer luctus tellus ac mi malesuada dignissim. Sed id diam dui.
-                                In ut nunc urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            </p>
-                            <a href="#">Read more</a>
-                        </div>
-                        <br>
+                        <%
+                        }
+                        %>
                         <a href="#" class="float_r">Read more</a>
                     </div>
-
+                        
                     <div class="content_box">
                         <h2>Tin Mobile</h2>
+                        <%
+                            for (int i = 0; i <= 5; i++) {
+                                TbTintuc tintucICT = ListTinICT.get(i);
+                        %>
                         <div class="tinict">
-                            <img class="image_wrapper image_fl" src="images/tooplate_image_04.jpg" alt="Image 04" width="280px" height="150px"/>
-                            <p><em>Pellentesque at lectus justo. Sed et tellus diam. Nunc consequat eleifend mattis. Sed sed justo leo. </em></p>
-                            <p>Nunc euismod lectus eu neque ultrices laoreet. Aenean <a href="#">et velit tincidunt</a> 
-                                ante porttitor facilisis. Quisque in turpis vitae enim blandit vehicula.
-                            </p>
-                            <p>Nullam a tortor est, congue fermentum nisi. Maecenas nulla nulla, lobortis eu volutpat euismod, 
-                                <a href="#">scelerisque ut dui</a>. Integer luctus tellus ac mi malesuada dignissim. Sed id diam dui.
-                                In ut nunc urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                            <img class="image_wrapper image_fl" src="images/<%=tintucICT.getHinhanh()%>" alt="Image 04" width="280px" height="150px"/>
+                            <p><em><%=tintucICT.getTentieude()%> </em></p>
+                            <p><%=tintucICT.getTomtatnd()%>
                             </p>
                             <a href="#">Read more</a>
                         </div>
                         <br>
-                        <div class="tinict">
-                            <img class="image_wrapper image_fl" src="images/tooplate_image_04.jpg" alt="Image 04" width="280px" height="150px"/>
-                            <p><em>Pellentesque at lectus justo. Sed et tellus diam. Nunc consequat eleifend mattis. Sed sed justo leo. </em></p>
-                            <p>Nunc euismod lectus eu neque ultrices laoreet. Aenean <a href="#">et velit tincidunt</a> 
-                                ante porttitor facilisis. Quisque in turpis vitae enim blandit vehicula.
-                            </p>
-                            <p>Nullam a tortor est, congue fermentum nisi. Maecenas nulla nulla, lobortis eu volutpat euismod, 
-                                <a href="#">scelerisque ut dui</a>. Integer luctus tellus ac mi malesuada dignissim. Sed id diam dui.
-                                In ut nunc urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            </p>
-                            <a href="#">Read more</a>
-                        </div>
-                        <br>
-                        <div class="tinict">
-                            <img class="image_wrapper image_fl" src="images/tooplate_image_04.jpg" alt="Image 04" width="280px" height="150px"/>
-                            <p><em>Pellentesque at lectus justo. Sed et tellus diam. Nunc consequat eleifend mattis. Sed sed justo leo. </em></p>
-                            <p>Nunc euismod lectus eu neque ultrices laoreet. Aenean <a href="#">et velit tincidunt</a> 
-                                ante porttitor facilisis. Quisque in turpis vitae enim blandit vehicula.
-                            </p>
-                            <p>Nullam a tortor est, congue fermentum nisi. Maecenas nulla nulla, lobortis eu volutpat euismod, 
-                                <a href="#">scelerisque ut dui</a>. Integer luctus tellus ac mi malesuada dignissim. Sed id diam dui.
-                                In ut nunc urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            </p>
-                            <a href="#">Read more</a>
-                        </div>
-                        <br>
-                        <div class="tinict">
-                            <img class="image_wrapper image_fl" src="images/tooplate_image_04.jpg" alt="Image 04" width="280px" height="150px"/>
-                            <p><em>Pellentesque at lectus justo. Sed et tellus diam. Nunc consequat eleifend mattis. Sed sed justo leo. </em></p>
-                            <p>Nunc euismod lectus eu neque ultrices laoreet. Aenean <a href="#">et velit tincidunt</a> 
-                                ante porttitor facilisis. Quisque in turpis vitae enim blandit vehicula.
-                            </p>
-                            <p>Nullam a tortor est, congue fermentum nisi. Maecenas nulla nulla, lobortis eu volutpat euismod, 
-                                <a href="#">scelerisque ut dui</a>. Integer luctus tellus ac mi malesuada dignissim. Sed id diam dui.
-                                In ut nunc urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            </p>
-                            <a href="#">Read more</a>
-                        </div>
-                        <br>
-                        <div class="tinict">
-                            <img class="image_wrapper image_fl" src="images/tooplate_image_04.jpg" alt="Image 04" width="280px" height="150px"/>
-                            <p><em>Pellentesque at lectus justo. Sed et tellus diam. Nunc consequat eleifend mattis. Sed sed justo leo. </em></p>
-                            <p>Nunc euismod lectus eu neque ultrices laoreet. Aenean <a href="#">et velit tincidunt</a> 
-                                ante porttitor facilisis. Quisque in turpis vitae enim blandit vehicula.
-                            </p>
-                            <p>Nullam a tortor est, congue fermentum nisi. Maecenas nulla nulla, lobortis eu volutpat euismod, 
-                                <a href="#">scelerisque ut dui</a>. Integer luctus tellus ac mi malesuada dignissim. Sed id diam dui.
-                                In ut nunc urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                            </p>
-                            <a href="#">Read more</a>
-                        </div>
-                        <br>
+                        <%
+                        }
+                        %>
                         <a href="#" class="float_r">Read more</a>
                     </div>
                 </div>

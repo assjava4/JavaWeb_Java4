@@ -61,7 +61,9 @@ private static final String UPLOAD_DIR = "images/";
         tbtt.setTentieude(tieude);
         tbtt.setTomtatnd(tomtat);
         tbtt.setNoidung(noidung);
+        if(hinh!=null){
         tbtt.setHinhanh(hinh);
+        }
         boolean rs = tt.InsertTinTuc(tbtt);
         if (rs) {
             response.sendRedirect("dstintuc.jsp");
