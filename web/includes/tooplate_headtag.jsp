@@ -6,3 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link href="css/tooplate_style.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script src="js/home_validate.js"></script>
