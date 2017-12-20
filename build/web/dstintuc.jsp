@@ -68,7 +68,7 @@
                                         <td><%= tintuc.getLuotxem()%></td>
 
                                         <td><a href="suaNews.jsp?idtintuc=<%= tintuc.getIdtintuc()%>">Sửa</a></td>  
-                                        <td><a href="<%= tintuc.getIdtintuc()%>">Xóa</td>  
+                                        <td><a href="DeletenewServlet?id=<%= tintuc.getIdtintuc()%>">Xóa</a></td>  
 
                                     </tr>
                                       <%

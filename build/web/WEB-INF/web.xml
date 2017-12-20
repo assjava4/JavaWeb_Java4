@@ -16,6 +16,10 @@
         <servlet-name>edituserServlet</servlet-name>
         <servlet-class>controller.edituserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeletenewServlet</servlet-name>
+        <servlet-class>controller.DeletenewServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>edituserServlet</servlet-name>
         <url-pattern>/edituserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletenewServlet</servlet-name>
+        <url-pattern>/DeletenewServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

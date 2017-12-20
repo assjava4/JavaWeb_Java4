@@ -31,7 +31,7 @@
                     <div class="grids">
                         <div class="form-section">
                             <h2>Form General Elements</h2>
-                            <form action="NewsServlet" method="post" enctype="multipart/form-data">
+                            <form action="NewsServlet" method="post" enctype="multipart/form-data" name="addnew">
                                 <div class="col-md-12 form-grid">
                                     <div class="form-grid1">
                                         <h4><span>Thêm</span> Tin tức</h4>
@@ -68,22 +68,6 @@
                                             <div class="clearfix"></div>
                                         </div>
 
-
-                                        <!--                                    <div class="bottom-form">
-                                                                                <div class="col-md-2 grid-form">
-                                                                                    <h5>select</h5>
-                                                                                </div>
-                                                                                <div class="col-md-9 grid-form1">
-                                                                                    <select class="ser">
-                                                                                        <option value="0">Please select</option>
-                                                                                        <option value="1">Option #1</option>
-                                                                                        <option value="2">Option #2</option>
-                                                                                        <option value="3">Option #3</option>
-                                                                                        <option value="4">Option #4</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                                <div class="clearfix"></div>
-                                                                            </div>-->
                                         <div class="bottom-form">
                                             <div class="col-md-2 grid-form">
                                                 <h5>Loại tin</h5>
@@ -104,16 +88,6 @@
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
-
-                                        <!--                                    <div class="bottom-form">
-                                                                                <div class="col-md-2 grid-form">
-                                                                                    <h5>File input</h5>
-                                                                                </div>
-                                                                                <div class="col-md-9 grid-form1">
-                                                                                    <input type="file" id="exampleInputFile">
-                                                                                </div>
-                                                                                <div class="clearfix"></div>
-                                                                            </div>-->
 
                                         <div class="bottom-form">
                                             <div class="col-md-2 grid-form">

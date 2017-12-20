@@ -134,6 +134,7 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
     margin: 0 auto; 
     color: #fff; 
     outline: none; 
+    float: left;
     text-indent: -10000px; 
     background:  url(../images/tooplate_logo.png) no-repeat top center; 
 }

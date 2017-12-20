@@ -55,6 +55,7 @@
                             </a>
                         </div>
                         <p><em><%=tintuc.getTentieude()%></em></p>
+                        <p>Lượt xem: <%=tintuc.getLuotxem()%></p>
                         <p align="justify"><%=tintuc.getTomtatnd()%></p>
                         <a href="#" class="more">Read more</a>
                     </div>
@@ -73,6 +74,7 @@
                         <div class="tinict">
                             <img class="image_wrapper image_fl" src="images/<%=tintucMB.getHinhanh()%>" alt="Image 04" width="280px" height="150px"/>
                             <p><em><%=tintucMB.getTentieude()%> </em></p>
+                            <p><%=tintucMB.getNgaydang()%> || Lượt xem: <%=tintucMB.getLuotxem()%></p>
                             <p><%=tintucMB.getTomtatnd()%>
                             </p>
                             
@@ -94,6 +96,7 @@
                         <div class="tinict">
                             <img class="image_wrapper image_fl" src="images/<%=tintucICT.getHinhanh()%>" alt="Image 04" width="280px" height="150px"/>
                             <p><em><%=tintucICT.getTentieude()%> </em></p>
+                            <p><%=tintucICT.getNgaydang()%> || Lượt xem: <%=tintucICT.getLuotxem()%></p>
                             <p><%=tintucICT.getTomtatnd()%>
                             </p>
                             <a href="#">Read more</a>
