@@ -53,10 +53,7 @@
                                             <h5>Tóm tắt nội dung</h5>
                                         </div>
                                         <div class="col-md-9">
-                                            <textarea name="tomtat" ><%=tin.getTomtatnd()%></textarea>
-                                            <script>
-                                                CKEDITOR.replace('tomtat');
-                                            </script>
+                                            <textarea name="tomtat" style="width: 100%;" rows="5"><%=tin.getTomtatnd()%></textarea>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>

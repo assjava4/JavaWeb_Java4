@@ -4,6 +4,7 @@
     Author     : DucHuy
 --%>
 
+<%@page import="service.tintucService"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,7 +27,10 @@
             <!-- begin of middle -->
             <%@include file="includes/tooplate_middle.jsp" %>
             <!-- end of middle -->
-
+            <%
+                              
+           tintucService ttsv = new tintucService();
+            %>
             <div id="tooplate_main">
                 <div class="post_box">
                     <h2> Blog Post with multi-level comments</h2>

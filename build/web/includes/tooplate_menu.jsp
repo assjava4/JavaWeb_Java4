@@ -9,10 +9,10 @@
 <div id="tooplate_menu">
     <ul>
         <li><a href="index.jsp" class="current">Trang chủ</a></li>
-        <li><a href="danhsachtin.jsp">Tin mới</a></li>
-        <li><a href="danhsachtin.jsp">Tin xem nhiều</a></li>
-        <li><a href="danhsachtin.jsp">Tin ICT</a></li>
-        <li><a href="danhsachtin.jsp">Tin mobile</a></li>
+        <li><a href="Tinmoi.jsp">Tin mới</a></li>
+        <li><a href="tinXemNhieu.jsp">Tin xem nhiều</a></li>
+        <li><a href="tinict.jsp">Tin ICT</a></li>
+        <li><a href="tinmobile.jsp">Tin mobile</a></li>
         <li><a href="phanhoi.jsp">Phản hồi</a></li>
         <li><a onclick="showLoginPopup()" style="cursor: pointer;">Đăng nhập</a></li>
         <li><a href="register.jsp">Đăng ký</a></li>

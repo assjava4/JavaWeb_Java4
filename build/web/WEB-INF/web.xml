@@ -17,8 +17,13 @@
         <servlet-class>controller.edituserServlet</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>RegisterMailServlet</servlet-name>
         <servlet-class>controller.RegisterMailServlet</servlet-class>
+=======
+        <servlet-name>DeletenewServlet</servlet-name>
+        <servlet-class>controller.DeletenewServlet</servlet-class>
+>>>>>>> 9efbdd87a68af2d412c474fe4a9047c53804f49f
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -37,8 +42,13 @@
         <url-pattern>/edituserServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>RegisterMailServlet</servlet-name>
         <url-pattern>/RegisterMailServlet</url-pattern>
+=======
+        <servlet-name>DeletenewServlet</servlet-name>
+        <url-pattern>/DeletenewServlet</url-pattern>
+>>>>>>> 9efbdd87a68af2d412c474fe4a9047c53804f49f
     </servlet-mapping>
     <session-config>
         <session-timeout>

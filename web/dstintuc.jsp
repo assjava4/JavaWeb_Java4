@@ -47,39 +47,35 @@
                                         <th>Hình</th>
                                         <th>Tiêu đề</th>
                                         <th>Tóm tắt nội dung</th>
-                                        <th>nội dung</th>
                                         <th>Ngày đăng</th>
-                                        <!--                                        <th>Người đăng</th>-->
-                                        <!--                                        <th>Loại tin</th>-->
                                         <th>Lượt xem</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <% int i = 0;
+                                
+                                <tbody>
+                                    <% int i = 0;
                                     for (TbTintuc tintuc : arrayList) {
                                         i++;
                                 %>
-                                <tbody>
                                     <tr>
                                         <td><img src="${pageContext.request.contextPath}/<%= folderupload%><%=tintuc.getHinhanh()%>" 
-                                                 width="80px" height="80px"/></td>
-                                        <td><%= tintuc.getTentieude()%></td>
-                                        <td><%= tintuc.getTomtatnd()%></td>
-                                        <td><%= tintuc.getNoidung()%></td>
+                                                 width="80px"/></td>
+                                        <td><%= tintuc.getTentieude().substring(0,20)%></td>
+                                        <td><%= tintuc.getTomtatnd().substring(0,20)%>...</td>
                                         <td><%= tintuc.getNgaydang()%></td>
-                                        0<!--                                        <td></td>
-                                                                                <td></td>-->
                                         <td><%= tintuc.getLuotxem()%></td>
 
                                         <td><a href="suaNews.jsp?idtintuc=<%= tintuc.getIdtintuc()%>">Sửa</a></td>  
-                                        <td><a href="<%= tintuc.getIdtintuc()%>">Xóa</td>  
+                                        <td><a href="DeletenewServlet?id=<%= tintuc.getIdtintuc()%>">Xóa</a></td>  
 
                                     </tr>
-                                </tbody>
-                                <%
+                                      <%
                                     }
                                 %>
+                                </tbody>
+                              
                             </table>
                         </div>
                         <%

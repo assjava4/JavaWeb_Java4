@@ -24,7 +24,7 @@ public class tintucService {
         try {
             tx = session.getTransaction();
             tx.begin();
-            String strquery = "from TbTintuc where idloaitin=" + id;
+            String strquery = "from TbTintuc where idloaitin=" + id + " order by ngaydang Desc";
             Query query = session.createQuery(strquery);
             Listtintuc = (ArrayList<TbTintuc>) query.list();
             tx.commit();
@@ -88,7 +88,7 @@ public class tintucService {
         try {
             tx = session.getTransaction();
             tx.begin();
-            String strquery = "from TbTintuc where idloaitin=" + idloaitin + " order by idtintuc Desc";
+            String strquery = "from TbTintuc where idloaitin=" + idloaitin;
 
             Query query = session.createQuery(strquery);
             query.setMaxResults(soluong);
@@ -104,30 +104,52 @@ public class tintucService {
         }
         return ListTinTUc;
     }
-
-    public boolean DeleteAlLTin(int idtin) {
+         public boolean Deletetintuc(TbTintuc tt){
         Session session = NewHibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
-
+        
         try {
             tx = session.getTransaction();
             tx.begin();
-            TbTintuc tin = new TbTintuc();
-            tin.setIdtintuc(idtin);
-            session.delete(tin);
+            
+            session.delete(tt);
             tx.commit();
             return true;
+            
         } catch (Exception e) {
-            if (tx != null) {
+            if(tx != null){
                 tx.rollback();
             }
-            System.out.println(e.toString());
-        } finally {
+        }finally{
             session.close();
         }
-
+        
         return false;
     }
+
+//    public boolean DeleteAlLTin(int idtin) {
+//        Session session = NewHibernateUtil.getSessionFactory().openSession();
+//        Transaction tx = null;
+//
+//        try {
+//            tx = session.getTransaction();
+//            tx.begin();
+//            TbTintuc tin = new TbTintuc();
+//            tin.setIdtintuc(idtin);
+//            session.delete(tin);
+//            tx.commit();
+//            return true;
+//        } catch (Exception e) {
+//            if (tx != null) {
+//                tx.rollback();
+//            }
+//            System.out.println(e.toString());
+//        } finally {
+//            session.close();
+//        }
+//
+//        return false;
+//    }
     public int usercount = 0;
 
     public ArrayList<TbTintuc> GetAllTinTucTheoLoaiTin(int pageSize, int pageNumber, int idloaitin) {
@@ -139,7 +161,7 @@ public class tintucService {
             tx = session.getTransaction();
             tx.begin();
 
-            Query query = session.createQuery("from TbTintuc where idloaitin=" + idloaitin);
+            Query query = session.createQuery("from TbTintuc where idloaitin = "+idloaitin+" order by ngaydang desc");
             usercount = query.list().size();
             query = query.setFirstResult(pageSize * (pageNumber - 1));
             query.setMaxResults(pageSize);
@@ -158,6 +180,8 @@ public class tintucService {
 
         return Listtintuc;
     }
+    
+    //
     public static ArrayList<TbTintuc> Getall() {
         Session session = NewHibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -180,6 +204,57 @@ public class tintucService {
         }
         return null;
     }
+    
+    //Lấy tin mobile
+
+    
+        public ArrayList<TbTintuc> Getalltinbyluotxem() {
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            String string = "from TbTintuc order by luotxem desc";
+            Query query = session.createQuery(string);
+
+            ArrayList<TbTintuc> arrayList = (ArrayList<TbTintuc>) query.list();
+            if (arrayList != null) {
+                return arrayList;
+            }
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+        
+    public ArrayList<TbTintuc> Getalltinbyngaydang() {
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            String string = "from TbTintuc order by ngaydang desc";
+            Query query = session.createQuery(string);
+
+            ArrayList<TbTintuc> arrayList = (ArrayList<TbTintuc>) query.list();
+            if (arrayList != null) {
+                return arrayList;
+            }
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+        
+        
     public TbTintuc getOnebyid(String id) {
        Session session = NewHibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -222,5 +297,33 @@ public class tintucService {
         }
         return null;
 
+    }
+     public static  ArrayList<TbTintuc> TimKiemTheoTuKhoa(String tuKhoa){
+        //Mở kết nối tới SQL
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        //Tạo giao dịch Transaction
+        Transaction tx = null;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            
+            //Viết câu lệnh
+            String cauLenh = "from TbTintuc where tieude like '%" + tuKhoa + "%'";
+            //Tạo câu Query
+            Query q = session.createQuery(cauLenh);
+            
+            ArrayList<TbTintuc> ketQua = (ArrayList<TbTintuc>)q.list();
+            
+            tx.commit();
+            return ketQua;
+            
+        } catch (Exception e) {
+            if(tx != null){
+                tx.rollback();
+            }
+        }finally{
+            session.close();
+        }
+        return null;        
     }
 }

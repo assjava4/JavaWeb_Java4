@@ -58,7 +58,7 @@ public class RegisterServlet extends HttpServlet {
         us.setSodienthoai(sodienthoai);
         us.setDiachi(diachi);
         us.setNgaytao(ngaytao);
-        us.setTbQuyen(tbQuyenService.getTbQuyenById("1"));
+        us.setTbQuyen(tbQuyenService.getTbQuyenById("3"));
         us.setIdtrangthai("notactive");
         us.setAvatar("avator.jpg");
 
